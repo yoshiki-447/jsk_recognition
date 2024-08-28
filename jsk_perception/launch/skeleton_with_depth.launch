@@ -1,0 +1,18 @@
+<!-- -*- mode: xml -*- -->
+<launch>
+  <arg name="default_name_space" default="skeleton_with_depth"/>
+  <arg name="input_skeleton" default="/edgetpu_human_pose_estimator/output/skeletons"/>
+  <arg name="input_depth" default="/rs_l515/depth/image_rect_raw"/>
+  <arg name="output_skeleton" default="/skeleton_with_depth/output/skeletons"/>
+  <arg name="input_camera_info" default="/rs_l515/color/camera_info"/>
+
+  <!-- <group ns="SkeletonWithDepth" > -->
+    <node pkg="jsk_perception" type="skeleton_with_depth.py" name="skeleton_with_depth">
+      <remap from="~input/skeleton" to="$(arg input_skeleton)" />
+      <remap from="~input/depth" to="$(arg input_depth)" />
+      <remap from="~output/skeleton" to="$(arg output_skeleton)" />
+      <remap from="~input/info" to="$(arg input_camera_info)" />    
+    </node>
+  <!-- </group> -->
+  
+</launch>
